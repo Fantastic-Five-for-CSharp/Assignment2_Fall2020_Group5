@@ -432,7 +432,7 @@ namespace Assignment2_Fall2020_Group5
 
         
 
-        // Method 
+        // Method to generate unique folder names
         public static string[] UniqFolderNames(string[] names)
         {
             try
