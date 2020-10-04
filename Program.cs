@@ -67,6 +67,7 @@ namespace Assignment2_Fall2020_Group5
             Console.WriteLine();
             Console.ReadKey();
 
+
             // Question 6
             Console.WriteLine("Question 6");
             int[] arr = new int[] { 1, 2, 2, 1, 1, 3 };
@@ -284,49 +285,24 @@ namespace Assignment2_Fall2020_Group5
         {
             try
             {
-                // Initialize a dictionary to store key value pairs 
-                var dict = new Dictionary<int, int>();
+                var firstnumbers = new HashSet<int>(nums1); // initialize a hashset to store the elements in nums1
+                var answer = new HashSet<int>();  // a hashset to hold the intersect numbers
 
-                // Store each unique element as the keys and their counts as values in the dictionary
-                foreach (int i in nums1)
+                foreach (var num in nums2)
                 {
-                    if (dict.ContainsKey(i))
+                    if (firstnumbers.Contains(num))
                     {
-                        dict[i] += 1;
-                    }
-                    else
-                    {
-                        dict[i] = 1;
+                        answer.Add(num); // add to the answer if the number is in both array
                     }
                 }
-
-                // Initialize a list to hold the intersected elements: since we don't know the true number of the intersected elements, list is better than array which doesn't need to specify size
-                List<int> result = new List<int>();
-                
-                // Iterate through num2 to find whether there is matched element in dict
-                foreach (int i in nums2)
-                {
-                    if (dict.ContainsKey(i))
-                    {
-                        result.Add(i);   // Append the matched element to the result list
-                        dict[i] -= 1;    // decrease the value of that matched key
-                        // Check whether the value of that key is equal to 0
-                        if (dict[i] == 0)
-                        {
-                            dict.Remove(i);  // Remove item from dict if it's true
-                        }
-                    }
-                }
-                return result.ToArray();  // convert to array and return
+                return answer.ToArray();
             }
             catch (Exception)
             {
                 throw;
             }
-            //return new int[] { };
         }
-
-        // Method
+        // Method that returns true if and only if the number of occurrences of each value in the array is unique.
         public static bool UniqueOccurrences(int[] arr)
         {
             try
@@ -432,7 +408,7 @@ namespace Assignment2_Fall2020_Group5
 
         
 
-        // Method 
+        // Method to generate unique folder names
         public static string[] UniqFolderNames(string[] names)
         {
             try
